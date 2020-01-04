@@ -90,7 +90,7 @@ class TagUpdateView(RetrieveUpdateAPIView):
 class TagDeleteView(DestroyAPIView):
     serializer_class = TagSerializer
     lookup_field = 'id'
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         queryset = Tag.objects.filter(

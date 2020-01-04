@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import {Link} from "react-router-dom";
+
 
 class HistoryOfChanges extends Component {
   state = {
@@ -40,7 +41,7 @@ class HistoryOfChanges extends Component {
                         <td>{item.owner}</td>
                         <td>{item.change_time}</td>
                         {/*{for item of this.}*/}
-                        <td><a href={`/project/${item.id}/history`}>view changes</a></td>
+                        <td><Link to={`/project/${item.id}/history`}>view changes</Link></td>
                     </tr>
                  ))}
                 </tbody>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import {Link} from "react-router-dom";
+
 
 class HistoryOfChangesDetail extends Component {
     constructor(props) {
@@ -49,7 +50,7 @@ class HistoryOfChangesDetail extends Component {
                         <td>{this.state.historyDetail.resulting_actual_development}</td>
                         <td>{this.state.historyDetail.change_delta_actual_testing}</td>
                         <td>{this.state.historyDetail.resulting_actual_testing}</td>
-                        <td><a href={`/project/${this.state.historyDetail.project_id}/initial-data`}>view changes</a></td>
+                        <td><Link to={`/project/${this.state.historyDetail.project_id}/initial-data`}>view changes</Link></td>
 
 
                     </tr>

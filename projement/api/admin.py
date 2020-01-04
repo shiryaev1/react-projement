@@ -1,5 +1,6 @@
 from django.contrib import admin
 
-from projement.api.models import Project
+from api.models import Project, HistoryOfChanges
 
 admin.site.register(Project)
+admin.site.register(HistoryOfChanges)

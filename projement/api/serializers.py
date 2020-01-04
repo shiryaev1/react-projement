@@ -90,6 +90,11 @@ class ProjectUpdateSerializer(ModelSerializer):
                             'actual_development',
                             'actual_testing'
                             ]
+        # extra_kwargs = {
+        #     'additional_hour_design': {'write_only': True},
+        #     'additional_hour_development': {'write_only': True},
+        #     'additional_hour_testing': {'write_only': True}
+        # }
 
     def update(self, instance, validated_data):
         default_value = Decimal(0)
@@ -213,7 +218,10 @@ class TagSerializer(ModelSerializer):
 
     class Meta:
         model = Tag
-        fields = '__all__'
+        fields = (
+            'id',
+            'title'
+        )
 
 
 class TagAddingHistorySerializer(ModelSerializer):

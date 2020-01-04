@@ -11,7 +11,6 @@ import { Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
 
 import Header from "./layout/Header";
-import Dashboard from "./projects/dashboard";
 import Alerts from "./layout/Alerts";
 import Login from "./accounts/Login";
 import Register from "./accounts/Register";
@@ -21,8 +20,12 @@ import { Provider } from "react-redux";
 import store from "../store";
 import { loadUser } from "../actions/auth";
 import ProjectCreate from "./projects/CreateProject";
+import ProjectUpdate from "./projects/ProjectUpdate";
+import HistoryOfChanges from "./projects/HistoryOfChanges";
+import HistoryOfChangesDetail from "./projects/HistoryOfChangesDetail";
+import InitialDataOfProject from "./projects/InitialDataOfProject";
+import Dashboard from "./tags/Dashboard";
 
-// Alert Options
 const alertOptions = {
   timeout: 3000,
   position: "top center"
@@ -44,9 +47,14 @@ class App extends Component {
               <div className="container">
                 <Switch>
                   <PrivateRoute exact path="/" component={Dashboard} />
-                  <Route exact path="/project/create" component={ProjectCreate} />
                   <Route exact path="/register" component={Register} />
                   <Route exact path="/login" component={Login} />
+                  <Route exact path="/project/create" component={ProjectCreate} />
+                  <Route path='/project/:id/update' component={ProjectUpdate} />
+                  <Route path='/project/history' component={HistoryOfChanges} />
+                  <Route path='/project/:id/history' component={HistoryOfChangesDetail} />
+                  <Route path='/project/:id/initial-data' component={InitialDataOfProject} />
+
                 </Switch>
               </div>
             </Fragment>
