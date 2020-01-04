@@ -72,7 +72,7 @@ class HistoryOfChangesDetailListView(RetrieveAPIView):
 class TagCreateView(ListCreateAPIView):
     serializer_class = TagSerializer
     queryset = Tag.objects.all()
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
 
 class TagUpdateView(RetrieveUpdateAPIView):

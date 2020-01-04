@@ -25,6 +25,7 @@ import HistoryOfChanges from "./projects/HistoryOfChanges";
 import HistoryOfChangesDetail from "./projects/HistoryOfChangesDetail";
 import InitialDataOfProject from "./projects/InitialDataOfProject";
 import Dashboard from "./tags/Dashboard";
+import DashboardProject from "./project/Dashboard";
 
 const alertOptions = {
   timeout: 3000,
@@ -49,6 +50,7 @@ class App extends Component {
                   <PrivateRoute exact path="/" component={Dashboard} />
                   <Route exact path="/register" component={Register} />
                   <Route exact path="/login" component={Login} />
+                  <Route exact path="/projects" component={DashboardProject} />
                   <Route exact path="/project/create" component={ProjectCreate} />
                   <Route path='/project/:id/update' component={ProjectUpdate} />
                   <Route path='/project/history' component={HistoryOfChanges} />

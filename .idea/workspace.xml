@@ -2,30 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="10efd11a-51e8-4617-8c85-6fe32dce7d9f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.babelrc" beforeDir="false" afterPath="$PROJECT_DIR$/.babelrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/react_projement.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/react_projement.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/projement/manage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projement/api/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/projement/api/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projement/api/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/projement/api/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projement/api/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/projement/api/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projement/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/projement/api/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projement/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/projement/api/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projement/frontend/src/actions/leads.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/src/actions/leads.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projement/frontend/src/actions/leads.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/src/actions/tags.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projement/frontend/src/actions/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/src/actions/types.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projement/frontend/src/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/src/components/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projement/frontend/src/components/projects/CreateProject.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/src/components/projects/CreateProject.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projement/frontend/src/components/projects/HistoryOfChanges.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/src/components/projects/HistoryOfChanges.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projement/frontend/src/components/projects/HistoryOfChangesDetail.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/src/components/projects/HistoryOfChangesDetail.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projement/frontend/src/components/projects/InitialDataOfProject.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/src/components/projects/InitialDataOfProject.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projement/frontend/src/components/projects/ProjectUpdate.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/src/components/projects/ProjectUpdate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projement/frontend/src/components/projects/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/src/components/projects/dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projement/frontend/src/components/layout/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/src/components/layout/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projement/frontend/src/components/tags/Form.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/src/components/tags/Form.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projement/frontend/src/components/tags/Tags.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/src/components/tags/Tags.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projement/frontend/src/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/src/reducers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projement/frontend/src/reducers/leads.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/src/reducers/leads.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projement/frontend/static/frontend/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/static/frontend/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projement/react_projement/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/projement/projement/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projement/react_projement/asgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/projement/projement/asgi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projement/react_projement/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/projement/projement/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projement/react_projement/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/projement/projement/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projement/react_projement/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/projement/projement/wsgi.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,11 +55,12 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/projement/frontend/src/components" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/projement/frontend/src/components/project" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/projement/frontend/src/components/project" />
       <recent name="$PROJECT_DIR$/projement/frontend/src/components" />
       <recent name="$PROJECT_DIR$/leadmanager/frontend/src/components" />
     </key>
@@ -130,7 +120,8 @@
       <workItem from="1578077394588" duration="3487000" />
       <workItem from="1578081979741" duration="1182000" />
       <workItem from="1578121465326" duration="14851000" />
-      <workItem from="1578138841158" duration="3652000" />
+      <workItem from="1578138841158" duration="4632000" />
+      <workItem from="1578143743182" duration="5229000" />
     </task>
     <servers />
   </component>
@@ -146,29 +137,33 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1578137666286" />
-    <state width="1807" height="278" key="GridCell.Tab.0.bottom" timestamp="1578137668345">
+    <state width="1807" height="278" key="GridCell.Tab.0.bottom" timestamp="1578144048092">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="278" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1578137668345" />
-    <state width="1807" height="278" key="GridCell.Tab.0.center" timestamp="1578137668343">
+    <state width="1807" height="278" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1578144048092" />
+    <state width="1807" height="278" key="GridCell.Tab.0.center" timestamp="1578144048091">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="278" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1578137668343" />
-    <state width="1807" height="278" key="GridCell.Tab.0.left" timestamp="1578137668342">
+    <state width="1807" height="278" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1578144048091" />
+    <state width="1807" height="278" key="GridCell.Tab.0.left" timestamp="1578144048091">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="278" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1578137668342" />
-    <state width="1807" height="278" key="GridCell.Tab.0.right" timestamp="1578137668345">
+    <state width="1807" height="278" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1578144048091" />
+    <state width="1807" height="278" key="GridCell.Tab.0.right" timestamp="1578144048092">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="278" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1578137668345" />
+    <state width="1807" height="278" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1578144048092" />
     <state x="482" y="187" key="SettingsEditor" timestamp="1578077538532">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="482" y="187" key="SettingsEditor/67.27.1853.1053@67.27.1853.1053" timestamp="1578077538532" />
-    <state x="649" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1578121495574">
+    <state x="649" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1578143750713">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="649" y="380" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1578121495574" />
+    <state x="649" y="380" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1578143750713" />
+    <state x="640" y="149" width="707" height="807" key="find.popup" timestamp="1578148820421">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="640" y="149" width="707" height="807" key="find.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1578148820421" />
   </component>
 </project>

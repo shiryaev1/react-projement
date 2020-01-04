@@ -149,11 +149,11 @@ class ProjectCreateSerializer(ModelSerializer):
             initial_actual_testing=self.data['actual_testing'],
             project=project
         )
-        TagAddingHistory.objects.get_or_create(
-            tag=self.validated_data.get('tags'),
-            project=project,
-            time_to_add=timezone.now()
-        )
+        # TagAddingHistory.objects.get_or_create(
+        #     tag=self.validated_data.get('tags'),
+        #     project=project,
+        #     time_to_add=timezone.now()
+        # )
         return project
 
 

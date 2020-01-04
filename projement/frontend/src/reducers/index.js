@@ -1,11 +1,13 @@
 import { combineReducers } from "redux";
-import leads from "./leads";
+import tags from "./leads";
 import errors from "./errors";
 import messages from "./messages";
 import auth from "./auth";
+import projects from "./projects";
 
 export default combineReducers({
-  leads,
+  projects,
+  tags,
   errors,
   messages,
   auth

@@ -1,23 +1,22 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { getTags, deleteTag } from "../../actions/tags";
+import { getProjects } from "../../actions/projects";
 
-export class Tags extends Component {
+export class Projects extends Component {
   static propTypes = {
-    tags: PropTypes.array.isRequired,
-    getTags: PropTypes.func.isRequired,
-    deleteTag: PropTypes.func.isRequired
+    projects: PropTypes.array.isRequired,
+    getProjects: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
-    this.props.getTags();
+    this.props.getProjects();
   }
 
   render() {
     return (
       <Fragment>
-        <h2>Tags</h2>
+        <h2>Projects</h2>
         <table className="table table-striped">
           <thead>
             <tr>
@@ -27,18 +26,12 @@ export class Tags extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.props.tags.map(lead => (
+            {this.props.projects.map(lead => (
               <tr key={lead.id}>
                 <td>{lead.id}</td>
                 <td>{lead.title}</td>
                 <td>
-                  <button
-                    onClick={this.props.deleteTag.bind(this, lead.id)}
-                    className="btn btn-danger btn-sm"
-                  >
-                    {" "}
-                    Delete
-                  </button>
+
                 </td>
               </tr>
             ))}
@@ -50,10 +43,10 @@ export class Tags extends Component {
 }
 
 const mapStateToProps = state => ({
-  tags: state.tags.tags
+  projects: state.projects.projects
 });
 
 export default connect(
   mapStateToProps,
-  { getTags, deleteTag }
-)(Tags);
+  { getProjects}
+)(Projects);
