@@ -3,18 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="10efd11a-51e8-4617-8c85-6fe32dce7d9f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projement/api/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/projement/api/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projement/api/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/projement/api/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projement/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/projement/api/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projement/frontend/src/actions/leads.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/src/actions/tags.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projement/frontend/src/actions/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/src/actions/types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projement/frontend/src/actions/projects.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/src/actions/projects.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projement/frontend/src/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/src/components/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projement/frontend/src/components/layout/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/src/components/layout/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projement/frontend/src/components/tags/Form.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/src/components/tags/Form.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projement/frontend/src/components/tags/Tags.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/src/components/tags/Tags.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projement/frontend/src/components/project/Form.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/src/components/project/Form.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projement/frontend/src/components/project/Projects.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/src/components/project/Projects.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projement/frontend/src/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/src/reducers/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projement/frontend/src/reducers/leads.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/src/reducers/leads.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projement/frontend/src/reducers/leads.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/src/reducers/tags.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projement/frontend/static/frontend/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/static/frontend/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projement/frontend/templates/frontend/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/templates/frontend/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +119,9 @@
       <workItem from="1578081979741" duration="1182000" />
       <workItem from="1578121465326" duration="14851000" />
       <workItem from="1578138841158" duration="4632000" />
-      <workItem from="1578143743182" duration="5229000" />
+      <workItem from="1578143743182" duration="5533000" />
+      <workItem from="1578152949837" duration="3351000" />
+      <workItem from="1578298550454" duration="3394000" />
     </task>
     <servers />
   </component>
@@ -137,33 +137,33 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1578137666286" />
-    <state width="1807" height="278" key="GridCell.Tab.0.bottom" timestamp="1578144048092">
+    <state width="1807" height="278" key="GridCell.Tab.0.bottom" timestamp="1578149284997">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="278" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1578144048092" />
-    <state width="1807" height="278" key="GridCell.Tab.0.center" timestamp="1578144048091">
+    <state width="1807" height="278" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1578149284997" />
+    <state width="1807" height="278" key="GridCell.Tab.0.center" timestamp="1578149284996">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="278" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1578144048091" />
-    <state width="1807" height="278" key="GridCell.Tab.0.left" timestamp="1578144048091">
+    <state width="1807" height="278" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1578149284996" />
+    <state width="1807" height="278" key="GridCell.Tab.0.left" timestamp="1578149284996">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="278" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1578144048091" />
-    <state width="1807" height="278" key="GridCell.Tab.0.right" timestamp="1578144048092">
+    <state width="1807" height="278" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1578149284996" />
+    <state width="1807" height="278" key="GridCell.Tab.0.right" timestamp="1578149284996">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="278" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1578144048092" />
+    <state width="1807" height="278" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1578149284996" />
     <state x="482" y="187" key="SettingsEditor" timestamp="1578077538532">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="482" y="187" key="SettingsEditor/67.27.1853.1053@67.27.1853.1053" timestamp="1578077538532" />
-    <state x="649" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1578143750713">
+    <state x="649" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1578298661446">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="649" y="380" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1578143750713" />
-    <state x="640" y="149" width="707" height="807" key="find.popup" timestamp="1578148820421">
+    <state x="649" y="380" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1578298661446" />
+    <state x="640" y="149" width="707" height="807" key="find.popup" timestamp="1578155445339">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="640" y="149" width="707" height="807" key="find.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1578148820421" />
+    <state x="640" y="149" width="707" height="807" key="find.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1578155445339" />
   </component>
 </project>

@@ -6,7 +6,7 @@ import { GET_PROJECTS, ADD_PROJECT } from "./types";
 
 export const getProjects = () => (dispatch, getState) => {
   axios
-    .get("http://127.0.0.1:8000/api/project/create/", tokenConfig(getState))
+    .get("http://127.0.0.1:8000/api/dashboard/", tokenConfig(getState))
     .then(res => {
       dispatch({
         type: GET_PROJECTS,

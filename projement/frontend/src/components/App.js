@@ -50,7 +50,7 @@ class App extends Component {
                   <PrivateRoute exact path="/" component={Dashboard} />
                   <Route exact path="/register" component={Register} />
                   <Route exact path="/login" component={Login} />
-                  <Route exact path="/projects" component={DashboardProject} />
+                  <PrivateRoute exact path="/projects" component={DashboardProject} />
                   <Route exact path="/project/create" component={ProjectCreate} />
                   <Route path='/project/:id/update' component={ProjectUpdate} />
                   <Route path='/project/history' component={HistoryOfChanges} />

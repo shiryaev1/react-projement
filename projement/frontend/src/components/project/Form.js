@@ -15,6 +15,7 @@ export class Form extends Component {
     estimated_testing: null,
     actual_testing: null,
     company: null,
+    companies: [],
 
   };
 
@@ -64,6 +65,21 @@ export class Form extends Component {
       company: null,
     });
   };
+  async componentDidMount() {
+    try {
+      const responseCompanies = await fetch('http://127.0.0.1:8000/api/company/create/');
+      const companies = await responseCompanies.json();
+      // const responseTagList = await fetch('http://127.0.0.1:8000/api/tag/create/');
+      // const tagList = await responseTagList.json();
+      this.setState({
+        companies,
+        // tagList,
+      });
+      console.log(this.state);
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
   render() {
     const {
@@ -80,17 +96,18 @@ export class Form extends Component {
     } = this.state;
     return (
       <div className="card card-body mt-4 mb-4">
-        <h2>Add tags</h2>
+        <h2>Add project</h2>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
             <label>Project company</label>
-            <input
-              className="form-control"
-              type="text"
-              name="company"
-              onChange={this.onChange}
-              value={company}
-            />
+            <select name="company"  className="select form-control"
+                   id="company"  onChange={this.onChange} required='required'>
+                <option value="" selected="">---------</option>
+                {this.state.companies.map(item => (
+                    <option value={item.id}>{item.name}</option>
+                ))}
+
+            </select>
           </div>
           <div className="form-group">
             <label>Title</label>
@@ -100,6 +117,7 @@ export class Form extends Component {
               name="title"
               onChange={this.onChange}
               value={title}
+              placeholder='0'
             />
           </div>
           <div className="form-group">
@@ -110,6 +128,7 @@ export class Form extends Component {
               name="start_date"
               onChange={this.onChange}
               value={start_date}
+              placeholder='0'
             />
           </div>
           <div className="form-group">
@@ -120,6 +139,7 @@ export class Form extends Component {
               name="end_date"
               onChange={this.onChange}
               value={end_date}
+              placeholder='0'
             />
           </div>
           <div className="form-group">
@@ -130,6 +150,7 @@ export class Form extends Component {
               name="estimated_design"
               onChange={this.onChange}
               value={estimated_design}
+              placeholder='0'
             />
           </div>
           <div className="form-group">
@@ -140,6 +161,7 @@ export class Form extends Component {
               name="actual_design"
               onChange={this.onChange}
               value={actual_design}
+              placeholder='0'
             />
           </div>
           <div className="form-group">
@@ -150,6 +172,7 @@ export class Form extends Component {
               name="estimated_development"
               onChange={this.onChange}
               value={estimated_development}
+              placeholder='0'
             />
           </div>
           <div className="form-group">
@@ -160,6 +183,7 @@ export class Form extends Component {
               name="actual_development"
               onChange={this.onChange}
               value={actual_development}
+              placeholder='0'
             />
           </div>
           <div className="form-group">
@@ -170,6 +194,7 @@ export class Form extends Component {
               name="estimated_testing"
               onChange={this.onChange}
               value={estimated_testing}
+              placeholder='0'
             />
           </div>
           <div className="form-group">
@@ -180,6 +205,7 @@ export class Form extends Component {
               name="actual_testing"
               onChange={this.onChange}
               value={actual_testing}
+              placeholder='0'
             />
           </div>
 
