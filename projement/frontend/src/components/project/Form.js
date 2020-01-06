@@ -15,7 +15,10 @@ export class Form extends Component {
     estimated_testing: null,
     actual_testing: null,
     company: null,
+    tags: [],
     companies: [],
+    tagList: [],
+
 
   };
 
@@ -37,7 +40,8 @@ export class Form extends Component {
         actual_development,
         estimated_testing,
         actual_testing,
-        company
+        company,
+        tags,
     } = this.state;
     const project = {
                 title,
@@ -49,9 +53,11 @@ export class Form extends Component {
                 actual_development,
                 estimated_testing,
                 actual_testing,
-                company
+                company,
+                tags,
     };
     this.props.addProject(project);
+    console.log(project);
     this.setState({
       title: "",
       start_date: null,
@@ -63,17 +69,18 @@ export class Form extends Component {
       estimated_testing: null,
       actual_testing: null,
       company: null,
+      tags: [],
     });
   };
   async componentDidMount() {
     try {
       const responseCompanies = await fetch('http://127.0.0.1:8000/api/company/create/');
       const companies = await responseCompanies.json();
-      // const responseTagList = await fetch('http://127.0.0.1:8000/api/tag/create/');
-      // const tagList = await responseTagList.json();
+      const responseTagList = await fetch('http://127.0.0.1:8000/api/tag/create/');
+      const tagList = await responseTagList.json();
       this.setState({
         companies,
-        // tagList,
+        tagList,
       });
       console.log(this.state);
     } catch (e) {
@@ -92,7 +99,8 @@ export class Form extends Component {
         actual_development,
         estimated_testing,
         actual_testing,
-        company
+        company,
+        tags
     } = this.state;
     return (
       <div className="card card-body mt-4 mb-4">
@@ -208,6 +216,25 @@ export class Form extends Component {
               placeholder='0'
             />
           </div>
+            <div className="form-group">
+            <label>Tags</label>
+            <select name="tags"  className="select form-control"
+                   id="tags"  onChange={this.onChange} required='required'>
+                <option value="" selected="">---------</option>
+                {this.state.tagList.map(item => (
+                    <option value={[item.id]}>{item.title}</option>
+                ))}
+
+            </select>
+            {/*<input*/}
+            {/*  className="form-control"*/}
+            {/*  type="text"*/}
+            {/*  name="tags"*/}
+            {/*  onChange={this.onChange}*/}
+            {/*  value={[tags]}*/}
+            {/*  // placeholder='0'*/}
+            {/*/>*/}
+            </div>
 
           <div className="form-group">
             <button type="submit" className="btn btn-primary">

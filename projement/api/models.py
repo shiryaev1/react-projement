@@ -67,7 +67,7 @@ class Project(models.Model):
                                              MinValueValidator(0),
                                          ]
                                          )
-    tags = models.ManyToManyField('Tag', blank=True, default=None, related_name='project')
+    tags = models.ForeignKey('Tag', blank=True, default=None, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
