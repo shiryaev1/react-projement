@@ -2,14 +2,14 @@ import axios from "axios";
 import { createMessage, returnErrors } from "./messages";
 import { tokenConfig } from "./auth";
 
-import { GET_LEADS, DELETE_LEAD, ADD_LEAD } from "./types";
+import { GET_TAGS, DELETE_TAG, ADD_TAG } from "./types";
 
 export const getTags = () => (dispatch, getState) => {
   axios
     .get("http://127.0.0.1:8000/api/tag/create/", tokenConfig(getState))
     .then(res => {
       dispatch({
-        type: GET_LEADS,
+        type: GET_TAGS,
         payload: res.data
       });
     })
@@ -24,7 +24,7 @@ export const deleteTag = id => (dispatch, getState) => {
     .then(res => {
       dispatch(createMessage({ deleteLead: "Tag Deleted" }));
       dispatch({
-        type: DELETE_LEAD,
+        type: DELETE_TAG,
         payload: id
       });
     })
@@ -37,7 +37,7 @@ export const addTag = lead => (dispatch, getState) => {
     .then(res => {
       dispatch(createMessage({ addLead: "Tag Added" }));
       dispatch({
-        type: ADD_LEAD,
+        type: ADD_TAG,
         payload: res.data
       });
     })

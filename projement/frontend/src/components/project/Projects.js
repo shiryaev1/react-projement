@@ -33,7 +33,7 @@ export class Projects extends Component {
             {this.props.projects.map(project => (
               <tr key={project.id}>
                 <td>{project.id}</td>
-                <td>{project.title}</td>
+                <td><Link to={`/project/${project.id}/update`}>{project.title}</Link></td>
                 <td>{project.company}</td>
                 <td>{project.estimated}</td>
                 <td>{project.actual}</td>

@@ -48,7 +48,6 @@ class ProjectUpdateSerializer(ModelSerializer):
 
     additional_hour_design = serializers.DecimalField(max_digits=7,
                                                       decimal_places=2,
-                                                      write_only=True,
                                                       required=False,
                                                       default=0,
                                                       validators=[
@@ -57,7 +56,6 @@ class ProjectUpdateSerializer(ModelSerializer):
                                                       ])
     additional_hour_development = serializers.DecimalField(max_digits=7,
                                                            decimal_places=2,
-                                                           write_only=True,
                                                            required=False,
                                                            default=0,
                                                            validators=[
@@ -67,7 +65,6 @@ class ProjectUpdateSerializer(ModelSerializer):
                                                            )
     additional_hour_testing = serializers.DecimalField(max_digits=7,
                                                        decimal_places=2,
-                                                       write_only=True,
                                                        required=False,
                                                        default=0,
                                                        validators=[
@@ -90,11 +87,11 @@ class ProjectUpdateSerializer(ModelSerializer):
                             'actual_development',
                             'actual_testing'
                             ]
-        # extra_kwargs = {
-        #     'additional_hour_design': {'write_only': True},
-        #     'additional_hour_development': {'write_only': True},
-        #     'additional_hour_testing': {'write_only': True}
-        # }
+        extra_kwargs = {
+            'additional_hour_design': {'write_only': True},
+            'additional_hour_development': {'write_only': True},
+            'additional_hour_testing': {'write_only': True}
+        }
 
     def update(self, instance, validated_data):
         default_value = Decimal(0)
@@ -149,11 +146,13 @@ class ProjectCreateSerializer(ModelSerializer):
             initial_actual_testing=self.data['actual_testing'],
             project=project
         )
-        # TagAddingHistory.objects.get_or_create(
-        #     tag=self.validated_data.get('tags'),
-        #     project=project,
-        #     time_to_add=timezone.now()
-        # )
+
+        if self.validated_data.get('tags'):
+            TagAddingHistory.objects.get_or_create(
+                tag=self.validated_data.get('tags'),
+                project=project,
+                time_to_add=timezone.now()
+            )
         return project
 
 
@@ -174,7 +173,6 @@ class HistoryOfChangesSerializer(ModelSerializer):
 
     def get_project(self, obj):
         return obj.project.title
-
 
 
 class InitialDataOfProjectSerializer(ModelSerializer):
@@ -225,10 +223,18 @@ class TagSerializer(ModelSerializer):
 
 
 class TagAddingHistorySerializer(ModelSerializer):
+    project = SerializerMethodField()
 
     class Meta:
         model = TagAddingHistory
-        fields = '__all__'
+        fields = (
+            'tag',
+            'project',
+            'time_to_add'
+        )
+
+    def get_project(self, obj):
+        return obj.project.title
 
 
 class UserSerializer(serializers.ModelSerializer):

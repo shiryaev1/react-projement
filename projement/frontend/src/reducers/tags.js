@@ -1,4 +1,4 @@
-import { GET_LEADS, DELETE_LEAD, ADD_LEAD, CLEAR_LEADS } from "../actions/types.js";
+import { GET_TAGS, DELETE_TAG, ADD_TAG, CLEAR_TAGS } from "../actions/types.js";
 
 const initialState = {
   tags: []
@@ -6,22 +6,22 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case GET_LEADS:
+    case GET_TAGS:
       return {
         ...state,
         tags: action.payload
       };
-    case DELETE_LEAD:
+    case DELETE_TAG:
       return {
         ...state,
         tags: state.tags.filter(lead => lead.id !== action.payload)
       };
-    case ADD_LEAD:
+    case ADD_TAG:
       return {
         ...state,
         tags: [...state.tags, action.payload]
       };
-    case CLEAR_LEADS:
+    case CLEAR_TAGS:
       return {
         ...state,
         tags: []

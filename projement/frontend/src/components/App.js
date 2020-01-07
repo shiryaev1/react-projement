@@ -19,13 +19,14 @@ import PrivateRoute from "./common/PrivateRoute";
 import { Provider } from "react-redux";
 import store from "../store";
 import { loadUser } from "../actions/auth";
-import ProjectCreate from "./projects/CreateProject";
-import ProjectUpdate from "./projects/ProjectUpdate";
-import HistoryOfChanges from "./projects/HistoryOfChanges";
-import HistoryOfChangesDetail from "./projects/HistoryOfChangesDetail";
-import InitialDataOfProject from "./projects/InitialDataOfProject";
+import ProjectUpdate from "./project/ProjectUpdate";
+import HistoryOfChanges from "./project/HistoryOfChanges";
+import HistoryOfChangesDetail from "./project/HistoryOfChangesDetail";
+import InitialDataOfProject from "./project/InitialDataOfProject";
 import Dashboard from "./tags/Dashboard";
 import DashboardProject from "./project/Dashboard";
+import TagAddingHistory from "./tags/TagAddingHistory";
+import TagUpdate from "./tags/TagUpdate";
 
 const alertOptions = {
   timeout: 3000,
@@ -51,12 +52,12 @@ class App extends Component {
                   <Route exact path="/register" component={Register} />
                   <Route exact path="/login" component={Login} />
                   <PrivateRoute exact path="/projects" component={DashboardProject} />
-                  <Route exact path="/project/create" component={ProjectCreate} />
                   <Route path='/project/:id/update' component={ProjectUpdate} />
                   <Route path='/project/history' component={HistoryOfChanges} />
                   <Route path='/project/:id/history' component={HistoryOfChangesDetail} />
                   <Route path='/project/:id/initial-data' component={InitialDataOfProject} />
-
+                  <Route path='/tags/history' component={TagAddingHistory} />
+                  <Route path='/tag/:id/:title/update' component={TagUpdate} />
                 </Switch>
               </div>
             </Fragment>

@@ -67,7 +67,8 @@ class Project(models.Model):
                                              MinValueValidator(0),
                                          ]
                                          )
-    tags = models.ForeignKey('Tag', blank=True, default=None, on_delete=models.CASCADE)
+    tags = models.ForeignKey('Tag', blank=True, default=None, null=True,
+                             on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title

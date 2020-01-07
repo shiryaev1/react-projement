@@ -15,7 +15,7 @@ export class Form extends Component {
     estimated_testing: null,
     actual_testing: null,
     company: null,
-    tags: [],
+    tags: null,
     companies: [],
     tagList: [],
 
@@ -57,7 +57,6 @@ export class Form extends Component {
                 tags,
     };
     this.props.addProject(project);
-    console.log(project);
     this.setState({
       title: "",
       start_date: null,
@@ -69,7 +68,7 @@ export class Form extends Component {
       estimated_testing: null,
       actual_testing: null,
       company: null,
-      tags: [],
+      tags: null,
     });
   };
   async componentDidMount() {
@@ -125,7 +124,7 @@ export class Form extends Component {
               name="title"
               onChange={this.onChange}
               value={title}
-              placeholder='0'
+              placeholder='title'
             />
           </div>
           <div className="form-group">
@@ -136,7 +135,7 @@ export class Form extends Component {
               name="start_date"
               onChange={this.onChange}
               value={start_date}
-              placeholder='0'
+              required='required'
             />
           </div>
           <div className="form-group">
@@ -147,7 +146,6 @@ export class Form extends Component {
               name="end_date"
               onChange={this.onChange}
               value={end_date}
-              placeholder='0'
             />
           </div>
           <div className="form-group">
@@ -159,6 +157,7 @@ export class Form extends Component {
               onChange={this.onChange}
               value={estimated_design}
               placeholder='0'
+              required='required'
             />
           </div>
           <div className="form-group">
@@ -170,6 +169,7 @@ export class Form extends Component {
               onChange={this.onChange}
               value={actual_design}
               placeholder='0'
+              required='required'
             />
           </div>
           <div className="form-group">
@@ -181,6 +181,7 @@ export class Form extends Component {
               onChange={this.onChange}
               value={estimated_development}
               placeholder='0'
+              required='required'
             />
           </div>
           <div className="form-group">
@@ -192,6 +193,7 @@ export class Form extends Component {
               onChange={this.onChange}
               value={actual_development}
               placeholder='0'
+              required='required'
             />
           </div>
           <div className="form-group">
@@ -203,6 +205,7 @@ export class Form extends Component {
               onChange={this.onChange}
               value={estimated_testing}
               placeholder='0'
+              required='required'
             />
           </div>
           <div className="form-group">
@@ -214,26 +217,19 @@ export class Form extends Component {
               onChange={this.onChange}
               value={actual_testing}
               placeholder='0'
+              required='required'
             />
           </div>
             <div className="form-group">
             <label>Tags</label>
             <select name="tags"  className="select form-control"
-                   id="tags"  onChange={this.onChange} required='required'>
+                   id="tags"  onChange={this.onChange}>
                 <option value="" selected="">---------</option>
                 {this.state.tagList.map(item => (
                     <option value={[item.id]}>{item.title}</option>
                 ))}
 
             </select>
-            {/*<input*/}
-            {/*  className="form-control"*/}
-            {/*  type="text"*/}
-            {/*  name="tags"*/}
-            {/*  onChange={this.onChange}*/}
-            {/*  value={[tags]}*/}
-            {/*  // placeholder='0'*/}
-            {/*/>*/}
             </div>
 
           <div className="form-group">

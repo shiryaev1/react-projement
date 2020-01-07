@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getTags, deleteTag } from "../../actions/tags";
+import {Link} from "react-router-dom";
 
 export class Tags extends Component {
   static propTypes = {
@@ -27,13 +28,13 @@ export class Tags extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.props.tags.map(lead => (
-              <tr key={lead.id}>
-                <td>{lead.id}</td>
-                <td>{lead.title}</td>
+            {this.props.tags.map(tag => (
+              <tr key={tag.id}>
+                <td>{tag.id}</td>
+                <td><Link to={`tag/${tag.id}/${tag.title}/update`}>{tag.title}</Link></td>
                 <td>
                   <button
-                    onClick={this.props.deleteTag.bind(this, lead.id)}
+                    onClick={this.props.deleteTag.bind(this, tag.id)}
                     className="btn btn-danger btn-sm"
                   >
                     {" "}
@@ -44,6 +45,9 @@ export class Tags extends Component {
             ))}
           </tbody>
         </table>
+        <Link to="/tags/history">
+            <input type="button" value="Tags history"/>
+        </Link>
       </Fragment>
     );
   }

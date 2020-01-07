@@ -40,7 +40,6 @@ class HistoryOfChanges extends Component {
                         </td>
                         <td>{item.owner}</td>
                         <td>{item.change_time}</td>
-                        {/*{for item of this.}*/}
                         <td><Link to={`/project/${item.id}/history`}>view changes</Link></td>
                     </tr>
                  ))}
