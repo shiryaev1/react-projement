@@ -132,6 +132,7 @@ class HistoryOfChanges(models.Model):
     resulting_actual_testing = models.CharField(max_length=164, blank=True)
     change_time = models.TimeField(blank=True)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return f'Change in {self.project.title} project at {self.change_time}'

@@ -117,7 +117,7 @@ class ProjectUpdateSerializer(ModelSerializer):
                                              'additional_hour_testing'] + self.instance.actual_testing,
                 change_time=timezone.now(),
                 project=self.instance,
-
+                owner=self.context.get('request').user
             )
 
         instance.actual_design += Decimal(validated_data.get(
@@ -159,6 +159,7 @@ class ProjectCreateSerializer(ModelSerializer):
 class HistoryOfChangesSerializer(ModelSerializer):
     view_changes = serializers.URLField(source='get_api_absolute_url', )
     project = SerializerMethodField()
+    owner = SerializerMethodField()
 
     class Meta:
         model = HistoryOfChanges
@@ -167,12 +168,16 @@ class HistoryOfChangesSerializer(ModelSerializer):
             'project_id',
             'change_time',
             'project',
+            'owner',
             'view_changes',
         ]
         read_only_fields = ['change_time', 'project', 'owner', 'project_id', ]
 
     def get_project(self, obj):
         return obj.project.title
+
+    def get_owner(self, obj):
+        return obj.owner.username
 
 
 class InitialDataOfProjectSerializer(ModelSerializer):

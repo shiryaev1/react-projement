@@ -85,9 +85,9 @@ WSGI_APPLICATION = 'projement.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'react_proj',
-        'USER': 'dev',
-        'PASSWORD': '123123qweqwe',
+        'NAME': 'projement_db',
+        'USER': 'developer',
+        'PASSWORD': '123123qwe',
         'HOST': 'localhost',
         'PORT': '5432',
     }

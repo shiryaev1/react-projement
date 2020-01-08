@@ -43,6 +43,7 @@ class HistoryOfChanges extends Component {
                 <thead>
                 <tr>
                     <th width="12%">Project</th>
+                    <th width="12%">Owner</th>
                     <th width="12%">Change time</th>
                     <th width="12%">Changes</th>
                 </tr>
@@ -53,6 +54,7 @@ class HistoryOfChanges extends Component {
                         <td>
                             <a href="">{item.project}</a>
                         </td>
+                        <td>{item.owner}</td>
                         <td>{item.change_time}</td>
                         <td><Link to={`/project/${item.id}/history`}>view changes</Link></td>
                     </tr>
