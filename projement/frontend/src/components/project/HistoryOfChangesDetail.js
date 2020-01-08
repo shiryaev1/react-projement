@@ -22,8 +22,8 @@ class HistoryOfChangesDetail extends Component {
             }
         };
         let changeId = this.props.match.params.id;
-        const res = await fetch(`http://127.0.0.1:8000/api/project/${changeId}/history/`, config);
-        const historyDetail = await res.json();
+        const response = await fetch(`http://127.0.0.1:8000/api/project/${changeId}/history/`, config);
+        const historyDetail = await response.json();
         this.setState({
           historyDetail
         });

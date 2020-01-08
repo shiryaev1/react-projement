@@ -17,8 +17,8 @@ class TagAddingHistory extends Component {
                 'Authorization': `Token ${localStorage.token}`
             }
         };
-      const res = await fetch('http://127.0.0.1:8000/api/tags/history/', config);
-      const history = await res.json();
+      const response = await fetch('http://127.0.0.1:8000/api/tags/history/', config);
+      const history = await response.json();
       this.setState({
         history
       });

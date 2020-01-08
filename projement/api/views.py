@@ -1,5 +1,4 @@
 from django.db.models import F
-# from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets
 
 from rest_framework.generics import RetrieveUpdateAPIView, \
@@ -9,7 +8,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from knox.models import AuthToken
 
-# from api.permissions import IsReadOnly
+from api.permissions import IsReadOnly
 from .serializers import DashboardListSerializer, ProjectUpdateSerializer, \
     CompanyCreateSerializer, ProjectCreateSerializer, \
     HistoryOfChangesSerializer, HistoryOfChangesDetailSerializer, TagSerializer, \
@@ -24,7 +23,7 @@ class DashboardViewSet(viewsets.ModelViewSet):
     queryset = Project.objects.order_by(
             F('end_date').desc(nulls_first=True))
     permission_classes = [
-        # IsReadOnly,
+        IsReadOnly,
         IsAuthenticated
     ]
 
@@ -53,8 +52,6 @@ class ProjectCreateView(ListCreateAPIView):
 class HistoryOfChangesListView(ListAPIView):
     serializer_class = HistoryOfChangesSerializer
     queryset = HistoryOfChanges.objects.order_by('-id')
-    # filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['project__title', ]
     permission_classes = [IsAuthenticated]
 
 

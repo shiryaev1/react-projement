@@ -23,10 +23,10 @@ class HistoryOfChanges extends Component {
                 'Authorization': `Token ${localStorage.token}`
             }
         };
-      const res = await fetch('http://127.0.0.1:8000/api/project/history/', config
+      const response = await fetch('http://127.0.0.1:8000/api/project/history/', config
       );
-      console.log(res);
-      const history = await res.json();
+      console.log(response);
+      const history = await response.json();
       this.setState({
         history
       });

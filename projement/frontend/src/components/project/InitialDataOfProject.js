@@ -19,8 +19,8 @@ class InitialDataOfProject extends Component {
             }
         };
         let projectId = this.props.match.params.id;
-        const res = await fetch(`http://127.0.0.1:8000/api/project/${projectId}/initial-data/`, config);
-        const initialData = await res.json();
+        const response = await fetch(`http://127.0.0.1:8000/api/project/${projectId}/initial-data/`, config);
+        const initialData = await response.json();
         this.setState({
           initialData
         });

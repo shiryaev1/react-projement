@@ -29,11 +29,11 @@ class TagUpdate extends Component {
             .put(`http://127.0.0.1:8000/api/tag/${this.props.match.params.id}/update/`, tags, {headers:{
                     'Authorization': `Token ${localStorage.token}`
                 }})
-            .then(res => {
-                if (res.status === 200){
+            .then(response => {
+                if (response.status === 200){
                     this.setState({success: true});
                 }
-                console.log(res);
+                console.log(response);
             }
             );
     };
