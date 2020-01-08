@@ -9,7 +9,15 @@ class TagAddingHistory extends Component {
 
   async componentDidMount() {
     try {
-      const res = await fetch('http://127.0.0.1:8000/api/tags/history/');
+      const config = {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Token ${localStorage.token}`
+            }
+        };
+      const res = await fetch('http://127.0.0.1:8000/api/tags/history/', config);
       const history = await res.json();
       this.setState({
         history

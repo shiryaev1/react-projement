@@ -28,7 +28,9 @@ class ProjectUpdate extends Component {
         });
 
         axios
-            .put(`http://127.0.0.1:8000/api/project/${this.props.match.params.id}/update/`, body)
+            .put(`http://127.0.0.1:8000/api/project/${this.props.match.params.id}/update/`, body, {headers:{
+                    'Authorization': `Token ${localStorage.token}`
+                }})
             .then(res => {
                 console.log(res);
                 console.log(this.state);

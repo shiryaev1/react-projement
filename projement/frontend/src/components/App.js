@@ -23,10 +23,10 @@ import ProjectUpdate from "./project/ProjectUpdate";
 import HistoryOfChanges from "./project/HistoryOfChanges";
 import HistoryOfChangesDetail from "./project/HistoryOfChangesDetail";
 import InitialDataOfProject from "./project/InitialDataOfProject";
-import Dashboard from "./tags/Dashboard";
 import DashboardProject from "./project/Dashboard";
 import TagAddingHistory from "./tags/TagAddingHistory";
 import TagUpdate from "./tags/TagUpdate";
+import DashboardTags from "./tags/Dashboard";
 
 const alertOptions = {
   timeout: 3000,
@@ -48,14 +48,14 @@ class App extends Component {
               <Alerts />
               <div className="container">
                 <Switch>
-                  <PrivateRoute exact path="/" component={Dashboard} />
+                  <PrivateRoute exact path="/" component={DashboardProject} />
                   <Route exact path="/register" component={Register} />
                   <Route exact path="/login" component={Login} />
-                  <PrivateRoute exact path="/projects" component={DashboardProject} />
                   <PrivateRoute path='/project/:id/update' component={ProjectUpdate} />
                   <PrivateRoute path='/project/history' component={HistoryOfChanges} />
                   <PrivateRoute path='/project/:id/history' component={HistoryOfChangesDetail} />
                   <PrivateRoute path='/project/:id/initial-data' component={InitialDataOfProject} />
+                  <PrivateRoute exact path="/tags" component={DashboardTags} />
                   <PrivateRoute path='/tags/history' component={TagAddingHistory} />
                   <PrivateRoute path='/tag/:id/:title/update' component={TagUpdate} />
                 </Switch>

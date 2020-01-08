@@ -24,7 +24,9 @@ class TagUpdate extends Component {
            title: ""
         });
         axios
-            .put(`http://127.0.0.1:8000/api/tag/${this.props.match.params.id}/update/`, tags)
+            .put(`http://127.0.0.1:8000/api/tag/${this.props.match.params.id}/update/`, tags, {headers:{
+                    'Authorization': `Token ${localStorage.token}`
+                }})
             .then(res => {
                 console.log(res);
             });

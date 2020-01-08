@@ -31,6 +31,7 @@ class DashboardViewSet(viewsets.ModelViewSet):
 
 class ProjectUpdateView(RetrieveUpdateAPIView):
     serializer_class = ProjectUpdateSerializer
+    permission_classes = [IsAuthenticated]
     lookup_field = 'id'
 
     def get_object(self):
@@ -81,6 +82,7 @@ class TagListView(ListAPIView):
 
 class TagUpdateView(RetrieveUpdateAPIView):
     serializer_class = TagSerializer
+    permission_classes = [IsAuthenticated]
     lookup_field = 'id'
 
     def get_queryset(self):

@@ -3,18 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="10efd11a-51e8-4617-8c85-6fe32dce7d9f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projement/api/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/projement/api/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projement/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/projement/api/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projement/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/projement/api/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projement/frontend/src/actions/messages.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/src/actions/messages.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projement/frontend/src/actions/projects.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/src/actions/projects.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projement/frontend/src/actions/tags.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/src/actions/tags.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projement/frontend/src/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/src/components/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projement/frontend/src/components/layout/Alerts.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/src/components/layout/Alerts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projement/frontend/src/components/project/Form.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/src/components/project/Form.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projement/frontend/src/components/project/HistoryOfChanges.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/src/components/project/HistoryOfChanges.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projement/frontend/src/components/project/HistoryOfChangesDetail.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/src/components/project/HistoryOfChangesDetail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projement/frontend/src/components/layout/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/src/components/layout/Header.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projement/frontend/src/components/project/ProjectUpdate.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/src/components/project/ProjectUpdate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projement/frontend/src/components/tags/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/src/components/tags/Dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projement/frontend/src/components/tags/TagAddingHistory.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/src/components/tags/TagAddingHistory.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projement/frontend/src/components/tags/TagUpdate.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/src/components/tags/TagUpdate.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projement/frontend/static/frontend/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/projement/frontend/static/frontend/main.js" afterDir="false" />
     </list>
@@ -130,7 +124,7 @@
       <workItem from="1578324158216" duration="4583000" />
       <workItem from="1578385673287" duration="9323000" />
       <workItem from="1578406430270" duration="7850000" />
-      <workItem from="1578467014640" duration="4252000" />
+      <workItem from="1578467014640" duration="6602000" />
     </task>
     <servers />
   </component>
