@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import 'whatwg-fetch';
+import {Redirect} from "react-router-dom";
 
 class TagUpdate extends Component {
     constructor(props) {
         super(props);
         this.state = {
             title: this.props.match.params.title,
+            success: false
         };
     }
 
@@ -28,10 +30,17 @@ class TagUpdate extends Component {
                     'Authorization': `Token ${localStorage.token}`
                 }})
             .then(res => {
+                if (res.status === 200){
+                    this.setState({success: true});
+                }
                 console.log(res);
-            });
+            }
+            );
     };
     render() {
+        if (this.state.success) {
+            return <Redirect to={'/tags'} />;
+        }
         const {title} = this.state;
         return (
             <div className="card card-body mt-4 mb-4">

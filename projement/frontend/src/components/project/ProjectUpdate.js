@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import 'whatwg-fetch';
+import {Redirect} from "react-router-dom";
 
 class ProjectUpdate extends Component {
     constructor(props) {
@@ -9,7 +10,8 @@ class ProjectUpdate extends Component {
         this.state = {
              additional_hour_design: "0.00",
              additional_hour_development: "0.00",
-             additional_hour_testing: "0.00"
+             additional_hour_testing: "0.00",
+             success: false
         };
     }
 
@@ -32,13 +34,16 @@ class ProjectUpdate extends Component {
                     'Authorization': `Token ${localStorage.token}`
                 }})
             .then(res => {
+                if (res.status === 200){
+                    this.setState({success: true});
+                }
                 console.log(res);
-                console.log(this.state);
-
             });
-
     };
     render() {
+        if (this.state.success) {
+            return <Redirect to={'/'} />;
+        }
         const {additional_hour_design, additional_hour_development, additional_hour_testing} = this.state;
         return (
 
@@ -72,7 +77,7 @@ class ProjectUpdate extends Component {
                   className="form-control"
                   type="number"
                   name="additional_hour_testing"
-                  onChange={this.onChange}
+                  onChange={this.changeHandler}
                   value={additional_hour_testing}
                 />
               </div>
