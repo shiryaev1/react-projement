@@ -10,12 +10,20 @@ class InitialDataOfProject extends Component {
 
   async componentDidMount() {
     try {
-      let projectId = this.props.match.params.id;
-      const res = await fetch(`http://127.0.0.1:8000/api/project/${projectId}/initial-data/`);
-      const initialData = await res.json();
-      this.setState({
-        initialData
-      });
+        const config = {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Token ${localStorage.token}`
+            }
+        };
+        let projectId = this.props.match.params.id;
+        const res = await fetch(`http://127.0.0.1:8000/api/project/${projectId}/initial-data/`, config);
+        const initialData = await res.json();
+        this.setState({
+          initialData
+        });
 
     } catch (e) {
       console.log(e);

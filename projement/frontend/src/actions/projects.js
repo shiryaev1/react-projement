@@ -22,7 +22,7 @@ export const addProject = project => (dispatch, getState) => {
   axios
     .post("http://127.0.0.1:8000/api/project/create/", project, tokenConfig(getState))
     .then(res => {
-      dispatch(createMessage({ addLead: "Projects Added" }));
+      dispatch(createMessage({ addObj: "Projects Added" }));
       dispatch({
         type: ADD_PROJECT,
         payload: res.data

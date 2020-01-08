@@ -52,12 +52,12 @@ class App extends Component {
                   <Route exact path="/register" component={Register} />
                   <Route exact path="/login" component={Login} />
                   <PrivateRoute exact path="/projects" component={DashboardProject} />
-                  <Route path='/project/:id/update' component={ProjectUpdate} />
-                  <Route path='/project/history' component={HistoryOfChanges} />
-                  <Route path='/project/:id/history' component={HistoryOfChangesDetail} />
-                  <Route path='/project/:id/initial-data' component={InitialDataOfProject} />
-                  <Route path='/tags/history' component={TagAddingHistory} />
-                  <Route path='/tag/:id/:title/update' component={TagUpdate} />
+                  <PrivateRoute path='/project/:id/update' component={ProjectUpdate} />
+                  <PrivateRoute path='/project/history' component={HistoryOfChanges} />
+                  <PrivateRoute path='/project/:id/history' component={HistoryOfChangesDetail} />
+                  <PrivateRoute path='/project/:id/initial-data' component={InitialDataOfProject} />
+                  <PrivateRoute path='/tags/history' component={TagAddingHistory} />
+                  <PrivateRoute path='/tag/:id/:title/update' component={TagUpdate} />
                 </Switch>
               </div>
             </Fragment>

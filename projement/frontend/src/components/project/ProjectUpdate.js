@@ -18,24 +18,26 @@ class ProjectUpdate extends Component {
     };
 
     handleSubmit = event => {
+        event.preventDefault();
+        const {additional_hour_design, additional_hour_development, additional_hour_testing} = this.state;
+        const body = {additional_hour_design, additional_hour_development, additional_hour_testing};
+        this.setState({
+            additional_hour_design: "0.00",
+            additional_hour_development: "0.00",
+            additional_hour_testing: "0.00"
+        });
 
         axios
-            .put(`http://127.0.0.1:8000/api/project/${this.props.match.params.id}/update/`, this.state)
+            .put(`http://127.0.0.1:8000/api/project/${this.props.match.params.id}/update/`, body)
             .then(res => {
                 console.log(res);
                 console.log(this.state);
 
             });
-        event.preventDefault();
-        this.setState({
-                    additional_hour_design: null,
-                    additional_hour_development: null,
-                    additional_hour_testing: null
-                })
 
     };
     render() {
-
+        const {additional_hour_design, additional_hour_development, additional_hour_testing} = this.state;
         return (
 
             <div className="card card-body mt-4 mb-4">
@@ -49,7 +51,7 @@ class ProjectUpdate extends Component {
                   type="number"
                   name="additional_hour_design"
                   onChange={this.changeHandler}
-                  placeholder='0'
+                  value={additional_hour_design}
                 />
               </div>
               <div className="form-group">
@@ -59,7 +61,7 @@ class ProjectUpdate extends Component {
                   type="number"
                   name="additional_hour_development"
                   onChange={this.changeHandler}
-                  placeholder='0'
+                  value={additional_hour_development}
                 />
               </div>
               <div className="form-group">
@@ -69,7 +71,7 @@ class ProjectUpdate extends Component {
                   type="number"
                   name="additional_hour_testing"
                   onChange={this.onChange}
-                  placeholder='0'
+                  value={additional_hour_testing}
                 />
               </div>
 

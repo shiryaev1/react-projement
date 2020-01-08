@@ -6,7 +6,7 @@ import { GET_TAGS, DELETE_TAG, ADD_TAG } from "./types";
 
 export const getTags = () => (dispatch, getState) => {
   axios
-    .get("http://127.0.0.1:8000/api/tag/create/", tokenConfig(getState))
+    .get("http://127.0.0.1:8000/api/tags/", tokenConfig(getState))
     .then(res => {
       dispatch({
         type: GET_TAGS,
@@ -22,7 +22,7 @@ export const deleteTag = id => (dispatch, getState) => {
   axios
     .delete(`http://127.0.0.1:8000/api/tag/${id}/delete/`, tokenConfig(getState))
     .then(res => {
-      dispatch(createMessage({ deleteLead: "Tag Deleted" }));
+      dispatch(createMessage({ deleteObj: "Tag Deleted" }));
       dispatch({
         type: DELETE_TAG,
         payload: id
@@ -31,11 +31,11 @@ export const deleteTag = id => (dispatch, getState) => {
     .catch(err => console.log(err));
 };
 
-export const addTag = lead => (dispatch, getState) => {
+export const addTag = tag => (dispatch, getState) => {
   axios
-    .post("http://127.0.0.1:8000/api/tag/create/", lead, tokenConfig(getState))
+    .post("http://127.0.0.1:8000/api/tag/create/", tag, tokenConfig(getState))
     .then(res => {
-      dispatch(createMessage({ addLead: "Tag Added" }));
+      dispatch(createMessage({ addObj: "Tag Added" }));
       dispatch({
         type: ADD_TAG,
         payload: res.data

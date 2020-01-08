@@ -3,7 +3,7 @@ from django.urls import path, re_path, include
 from .views import DashboardViewSet, ProjectUpdateView, CompanyCreateView, \
     ProjectCreateView, HistoryOfChangesListView, HistoryOfChangesDetailListView, \
     TagCreateView, TagUpdateView, TagDeleteView, TagAddingHistoryView, \
-    InitialDataOfProjectView, RegisterAPI, LoginAPI, UserAPI
+    InitialDataOfProjectView, RegisterAPI, LoginAPI, UserAPI, TagListView
 
 from knox import views as knox_views
 
@@ -23,6 +23,7 @@ urlpatterns = [
     re_path('^project/(?P<id>[0-9]+)/history/$',
             HistoryOfChangesDetailListView.as_view(),
             name='project-history-detail'),
+    path('tags/', TagListView.as_view(), name='tag-list'),
     path('tag/create/',  TagCreateView.as_view(), name='tag-create'),
     re_path('^tag/(?P<id>[0-9]+)/update/$', TagUpdateView.as_view(),
             name='tag-update'),

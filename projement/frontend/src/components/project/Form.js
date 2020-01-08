@@ -23,7 +23,7 @@ export class Form extends Component {
   };
 
   static propTypes = {
-    addProject: PropTypes.func.isRequired
+    addProject: PropTypes.func.isRequired,
   };
 
   onChange = e => this.setState({ [e.target.name]: e.target.value });
@@ -71,11 +71,12 @@ export class Form extends Component {
       tags: null,
     });
   };
+
   async componentDidMount() {
     try {
       const responseCompanies = await fetch('http://127.0.0.1:8000/api/company/create/');
       const companies = await responseCompanies.json();
-      const responseTagList = await fetch('http://127.0.0.1:8000/api/tag/create/');
+      const responseTagList = await fetch('http://127.0.0.1:8000/api/tags/');
       const tagList = await responseTagList.json();
       this.setState({
         companies,

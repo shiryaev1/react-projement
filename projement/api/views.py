@@ -1,12 +1,11 @@
-
 from django.db.models import F
 # from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets
 
 from rest_framework.generics import RetrieveUpdateAPIView, \
     get_object_or_404, ListAPIView, RetrieveAPIView, \
-    ListCreateAPIView, DestroyAPIView, GenericAPIView
-from rest_framework.permissions import IsAuthenticated, AllowAny
+    ListCreateAPIView, DestroyAPIView, GenericAPIView, CreateAPIView
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from knox.models import AuthToken
 
@@ -24,13 +23,15 @@ class DashboardViewSet(viewsets.ModelViewSet):
     serializer_class = DashboardListSerializer
     queryset = Project.objects.order_by(
             F('end_date').desc(nulls_first=True))
-    # permission_classes = [IsReadOnly, IsAuthenticated]
+    permission_classes = [
+        # IsReadOnly,
+        IsAuthenticated
+    ]
 
 
 class ProjectUpdateView(RetrieveUpdateAPIView):
     serializer_class = ProjectUpdateSerializer
     lookup_field = 'id'
-    # permission_classes = [IsAuthenticated]
 
     def get_object(self):
         pk = self.kwargs["id"]
@@ -40,12 +41,11 @@ class ProjectUpdateView(RetrieveUpdateAPIView):
 class CompanyCreateView(ListCreateAPIView):
     serializer_class = CompanyCreateSerializer
     queryset = Company.objects.all()
-    # permission_classes = [IsAuthenticated]
 
 
 class ProjectCreateView(ListCreateAPIView):
     serializer_class = ProjectCreateSerializer
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
     queryset = Project.objects.all()
 
 
@@ -54,13 +54,13 @@ class HistoryOfChangesListView(ListAPIView):
     queryset = HistoryOfChanges.objects.order_by('-id')
     # filter_backends = [DjangoFilterBackend]
     filterset_fields = ['project__title', ]
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
 
 class HistoryOfChangesDetailListView(RetrieveAPIView):
     serializer_class = HistoryOfChangesDetailSerializer
     lookup_field = 'id'
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         queryset = HistoryOfChanges.objects.filter(
@@ -69,16 +69,19 @@ class HistoryOfChangesDetailListView(RetrieveAPIView):
         return queryset
 
 
-class TagCreateView(ListCreateAPIView):
+class TagCreateView(CreateAPIView):
+    serializer_class = TagSerializer
+    permission_classes = [IsAuthenticated]
+
+
+class TagListView(ListAPIView):
     serializer_class = TagSerializer
     queryset = Tag.objects.all()
-    # permission_classes = [IsAuthenticated]
 
 
 class TagUpdateView(RetrieveUpdateAPIView):
     serializer_class = TagSerializer
     lookup_field = 'id'
-    # permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         queryset = Tag.objects.filter(
@@ -102,13 +105,13 @@ class TagDeleteView(DestroyAPIView):
 class TagAddingHistoryView(ListAPIView):
     serializer_class = TagAddingHistorySerializer
     queryset = TagAddingHistory.objects.all()
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
 
 class InitialDataOfProjectView(viewsets.ModelViewSet):
     serializer_class = InitialDataOfProjectSerializer
     lookup_field = 'id'
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         queryset = InitialDataOfProject.objects.filter(
@@ -151,3 +154,4 @@ class UserAPI(RetrieveAPIView):
 
     def get_object(self):
         return self.request.user
+

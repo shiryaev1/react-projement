@@ -13,12 +13,20 @@ class HistoryOfChangesDetail extends Component {
 
   async componentDidMount() {
     try {
-      let changeId = this.props.match.params.id;
-      const res = await fetch(`http://127.0.0.1:8000/api/project/${changeId}/history/`);
-      const historyDetail = await res.json();
-      this.setState({
-        historyDetail
-      });
+        const config = {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Token ${localStorage.token}`
+            }
+        };
+        let changeId = this.props.match.params.id;
+        const res = await fetch(`http://127.0.0.1:8000/api/project/${changeId}/history/`, config);
+        const historyDetail = await res.json();
+        this.setState({
+          historyDetail
+        });
 
     } catch (e) {
       console.log(e);

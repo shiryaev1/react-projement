@@ -169,7 +169,7 @@ class HistoryOfChangesSerializer(ModelSerializer):
             'project',
             'view_changes',
         ]
-        read_only_fields = ['change_time', 'project', 'owner', ]
+        read_only_fields = ['change_time', 'project', 'owner', 'project_id', ]
 
     def get_project(self, obj):
         return obj.project.title
