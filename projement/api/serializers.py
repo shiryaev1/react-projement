@@ -1,9 +1,7 @@
-import pdb
 from decimal import Decimal
 
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
-from django.core import exceptions
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils import timezone
 from rest_framework import serializers
@@ -242,13 +240,13 @@ class TagAddingHistorySerializer(ModelSerializer):
         return obj.project.title
 
 
-class UserSerializer(serializers.ModelSerializer):
+class UserSerializer(ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'username', 'email')
 
 
-class RegisterSerializer(serializers.ModelSerializer):
+class RegisterSerializer(ModelSerializer):
 
     class Meta:
         model = User
@@ -266,7 +264,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         return user
 
 
-class LoginSerializer(serializers.ModelSerializer):
+class LoginSerializer(ModelSerializer):
     username = serializers.CharField()
     password = serializers.CharField()
 
