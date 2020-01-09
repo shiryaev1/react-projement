@@ -1,4 +1,9 @@
+os: linux
+
 language: python
+branches:
+  only:
+    - master
 python:
   - "3.6"
 
@@ -9,10 +14,10 @@ before_script: pip install docker-compose
 
 install:
   - npm install
-#  - npm run dev
   - npm run build
 
 script:
   - docker-compose run web sh -c "python projement/manage.py test api.tests"
 
-
+notifications:
+  email: false
