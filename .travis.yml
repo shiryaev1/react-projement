@@ -1,19 +1,11 @@
-language: node_js
-node_js:
-  - 11.6.0
-cache: npm
+language: python
+python:
+  - "3.6"
 
-install:
-  - npm install
+services:
+  - docker
+
+before_script: pip install docker-compose
 
 script:
-  - npm test
-  - npm run dev
-  - npm run build
-
-deploy:
-  provider: pages
-  skip_cleanup: true
-  github-token: $github_token
-  on:
-    branch: master
+  - docker-compose run app sh -c "python manage.py test && flake8"
