@@ -1,19 +1,19 @@
-language: node_js
-node_js:
-  - 11.6.0
-cache: npm
-
-install:
-  - npm install
-
-script:
-  - npm test
-  - npm run dev
-  - npm run build
-
-deploy:
-  provider: pages
-  skip_cleanup: true
-  github-token: $GITHUB_TOKEN
-  on:
-    branch: gh-pages
+#language: node_js
+#node_js:
+#  - 11.6.0
+#cache: npm
+#
+#install:
+#  - npm install
+#
+#script:
+#  - npm test
+#  - npm run dev
+#  - npm run build
+#
+#deploy:
+#  provider: pages
+#  skip_cleanup: true
+#  github-token: $GITHUB_TOKEN
+#  on:
+#    branch: gh-pages
