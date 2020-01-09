@@ -1,0 +1,22 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=developer
+      - POSTGRES_PASSWORD=123123qwe
+      - POSTGRES_DB=projement_db
+    volumes:
+      - .:/src
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    command: bash entrypoint.sh
+
+    depends_on:
+      - db
+    volumes:
+    - .:/src
