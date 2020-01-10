@@ -1,3 +1,4 @@
+import json
 import pdb
 
 from django.contrib.auth.models import User
@@ -17,23 +18,20 @@ def create_company():
     return company
 
 
-# def create_tag():
-#     tag = Tag.objects.create(
-#         title='python'
-#     )
-#     return tag
-
-
 class DashboardTestCase(TestCase):
 
     fixtures = ['initial.json']
 
     def setUp(self):
         super().setUp()
-        self.factory = APIRequestFactory()
-        self.user = User.objects.create_user('foo', 'info@throgate.eu', 'bar')
+        self.user = User.objects.create_user(username='admin',
+                                             password='123123qweqwe')
         self.token = Token.objects.create(user=self.user)
-        self.header = {'HTTP_AUTHORIZATION': 'Token {}'.format(self.token)}
+        self.api_authentication()
+
+    def api_authentication(self):
+        self.client = APIClient()
+        self.client.credentials(HTTP_AUTHORIZATION="Token" + self.token.key)
 
     def test_get_dashboard(self):
         client = Client()
@@ -41,22 +39,18 @@ class DashboardTestCase(TestCase):
         self.assertEqual(response.status_code, 401)
 
         # Authenticated users can see the dashboard
+        self.client.force_authenticate(user=self.user)
+        response = self.client.get('/api/dashboard/')
 
-        request = self.factory.get('/api/dashboard/', self.header)
-        force_authenticate(request, user=self.user)
-        view = views.DashboardViewSet.as_view({'get': 'list'})
-        response = view(request)
         self.assertEqual(response.status_code, 200)
 
     def test_projects_on_dashboard(self):
 
         # There are 3 projects on the dashboard (loaded from the fixtures)
-
-        request = self.factory.get('/api/dashboard/', self.header)
-        force_authenticate(request, user=self.user)
-        view = views.DashboardViewSet.as_view({'get': 'list'})
-        response = view(request)
+        self.client.force_authenticate(user=self.user)
+        response = self.client.get('/api/dashboard/')
         projects = response.data
+
         self.assertEqual(len(projects), 3)
 
 
@@ -65,13 +59,41 @@ class ProjectsTestCase(TestCase):
 
     def setUp(self):
         super().setUp()
-        username, password = 'Thorgate', 'thorgate123'
-        User.objects.create_user(username=username, email='info@throgate.eu',
-                                 password=password)
-
-        self.authenticated_client = Client()
-        self.authenticated_client.login(username=username, password=password)
+        self.user = User.objects.create_user(username='admin',
+                                             password='123123qweqwe')
+        self.token = Token.objects.create(user=self.user)
+        self.api_authentication()
         self.projects = Project.objects.order_by('id')
+
+    def api_authentication(self):
+        self.client = APIClient()
+        self.client.credentials(HTTP_AUTHORIZATION="Token" + self.token.key)
+
+    def create_tag(self):
+        tag = Tag.objects.create(
+            title='python'
+        )
+        return tag
+
+    def test_create_project(self):
+        company = create_company()
+        tag = self.create_tag()
+        self.client.force_authenticate(user=self.user)
+        response = self.client.post('/api/project/create/', {
+            'title': 'test-company',
+            'start_date': '2012-01-12',
+            'end_date': '',
+            'estimated_design': 1,
+            'actual_design': 3,
+            'estimated_development': 4,
+            'actual_development': 3,
+            'estimated_testing': 3,
+            'actual_testing': 4,
+            'company': company.id,
+            'tags': tag.id,
+        })
+
+        self.assertEqual(response.status_code, 201)
 
     def test_project_has_ended(self):
 
@@ -104,10 +126,15 @@ class TagTestCase(TestCase):
 
     def setUp(self):
         super().setUp()
-        self.factory = APIRequestFactory()
-        self.user = User.objects.create_user('foo', 'info@throgate.eu', 'bar')
+        self.user = User.objects.create_user(username='admin',
+                                             password='123123qweqwe')
         self.token = Token.objects.create(user=self.user)
-        self.header = {'HTTP_AUTHORIZATION': 'Token {}'.format(self.token)}
+        self.api_authentication()
+        self.projects = Project.objects.order_by('id')
+
+    def api_authentication(self):
+        self.client = APIClient()
+        self.client.credentials(HTTP_AUTHORIZATION="Token" + self.token.key)
 
     def create_tag(self):
         tag = Tag.objects.create(
@@ -118,7 +145,7 @@ class TagTestCase(TestCase):
     def create_project(self):
         company = create_company()
         tag = self.create_tag()
-        project = self.factory.post('/api/project/create/', {
+        project = self.client.post('/api/project/create/', {
             'title': 'test-company',
             'start_date': '2012-01-12',
             'end_date': '',
@@ -130,53 +157,38 @@ class TagTestCase(TestCase):
             'actual_testing': 4,
             'company': company,
             'tags': tag,
-        }, self.header)
+        })
         return project
 
     def test_get_history_of_changes(self):
 
-        client = Client()
-        response = client.get('/api/tags/history/')
+        response = self.client.get('/api/tags/history/')
         self.assertEqual(response.status_code, 401)
 
-        request = self.factory.get('/api/tags/history/', self.header)
-        force_authenticate(request, user=self.user)
-        view = views.TagAddingHistoryView.as_view()
-        response = view(request)
+        self.client.force_authenticate(user=self.user)
+        response = self.client.get('/api/tags/history/')
+
         self.assertEqual(response.status_code, 200)
 #
     def test_tags_list_requires_authentication(self):
 
         # All users can see the tags-list.
-        # Anonymous user
-
-        client = Client()
-        response = client.get('/api/tags/')
-        self.assertEqual(response.status_code, 200)
-
-        # Authenticated client
-        request = self.factory.get('/tags/', self.header)
-        force_authenticate(request, user=self.user)
-        view = views.TagListView.as_view()
-        response = view(request)
+        response = self.client.get('/api/tags/')
         self.assertEqual(response.status_code, 200)
 
     def test_tag_create(self):
 
         # Anonymous users can't create tag
 
-        client = Client()
-        response = client.get('/api/tag/create/')
+        response = self.client.get('/api/tag/create/')
         self.assertEqual(response.status_code, 401)
 
         # Authenticated users can create tag
 
-        request = self.factory.post('/api/tag/create/', {
+        self.client.force_authenticate(user=self.user)
+        response = self.client.post('/api/tag/create/', {
             'title': self.create_tag()
         })
-        force_authenticate(request, user=self.user)
-        view = views.TagCreateView.as_view()
-        response = view(request)
 
         self.assertEqual(response.status_code, 201)
 
@@ -184,14 +196,13 @@ class TagTestCase(TestCase):
 
         # Anonymous users can't update tag
 
-        client = Client()
         tag = self.create_tag()
 
-        response = client.post(
-            reverse('api:tag-update', kwargs={'id': tag.id}),
-            {
-                'title': 'django',
-            }
+        response = self.client.put(f'/api/tag/{tag.id}/update/', json.dumps(
+                              {
+                                  'title': 'django',
+                              }), content_type='application/json'
+
         )
 
         self.assertEqual(response.status_code, 401)
@@ -201,28 +212,39 @@ class TagTestCase(TestCase):
 
         # Authenticated users can update tag
 
-        # response = self.factory.post(
-        #     reverse('api:tag-update', kwargs={'id': tag.pk}),
-        #     {
-        #         'title': 'django',
-        #     },
-        #     self.header
-        # )
-        # self.assertEqual(response.status_code, 200)
-        #
-        # tag.refresh_from_db()
-        # self.assertEqual(tag.title, 'django')
+        self.client.force_authenticate(user=self.user)
+
+        response = self.client.put(f'/api/tag/{tag.id}/update/', json.dumps(
+                                   {
+                                       'title': 'django',
+                                   }), content_type='application/json'
+
+                                   )
+
+        self.assertEqual(response.status_code, 200)
+
+        tag.refresh_from_db()
+        self.assertEqual(tag.title, 'django')
 
     def test_tag_delete(self):
 
         # Anonymous users can't delete tag
 
-        client = Client()
         tag = self.create_tag()
-        response = client.delete(
+        response = self.client.delete(
             reverse('api:tag-delete', kwargs={'id': tag.id}))
 
         self.assertEqual(response.status_code, 401)
 
         tag.refresh_from_db()
         self.assertEqual(tag.title, 'python')
+
+        # Authenticated users can update tag
+
+        self.client.force_authenticate(user=self.user)
+        response = self.client.delete(
+            reverse('api:tag-delete', kwargs={'id': tag.id}))
+
+        self.assertEqual(response.status_code, 204)
+
+
