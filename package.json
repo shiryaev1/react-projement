@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack --mode development --watch projement/frontend/src/index.js --output projement/frontend/static/frontend/main.js",
     "build": "webpack --mode production projement/frontend/src/index.js --output projement/frontend/static/frontend/main.js",
-    "test": "react-scripts test"
+    "test": "mocha"
   },
   "keywords": [],
   "author": "",
@@ -33,6 +33,7 @@
     "axios": "^0.18.0",
     "bootstrap": "^4.4.1",
     "jest-haste-map": "^24.9.0",
+    "mocha": "^7.0.0",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
     "react-alert": "^4.0.4",

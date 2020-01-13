@@ -13,7 +13,7 @@ from .serializers import DashboardListSerializer, ProjectUpdateSerializer, \
     CompanyCreateSerializer, ProjectCreateSerializer, \
     HistoryOfChangesSerializer, HistoryOfChangesDetailSerializer, TagSerializer, \
     TagAddingHistorySerializer, InitialDataOfProjectSerializer, \
-    UserSerializer, RegisterSerializer, LoginSerializer
+    UserSerializer, RegisterSerializer, LoginSerializer, ProjectHistory
 from .models import Project, HistoryOfChanges, Tag, TagAddingHistory, \
     InitialDataOfProject, Company
 
@@ -154,3 +154,8 @@ class UserAPI(RetrieveAPIView):
     def get_object(self):
         return self.request.user
 
+
+class ProjectHistoryView(ListAPIView):
+    serializer_class = ProjectHistory
+    queryset = Project.objects.all()
+    # permission_classes = [IsAuthenticated]

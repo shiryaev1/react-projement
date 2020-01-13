@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from "react-router-dom";
 
-const headers = () => {
-  const h = new Headers();
-  h.append('Content-Type', 'application/json');
-  h.append("Authorization", localStorage.token);
-  return h;
-};
 
 class HistoryOfChanges extends Component {
   state = {

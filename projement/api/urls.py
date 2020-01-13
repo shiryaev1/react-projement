@@ -3,7 +3,8 @@ from django.urls import path, re_path, include
 from .views import DashboardViewSet, ProjectUpdateView, CompanyCreateView, \
     ProjectCreateView, HistoryOfChangesListView, HistoryOfChangesDetailListView, \
     TagCreateView, TagUpdateView, TagDeleteView, TagAddingHistoryView, \
-    InitialDataOfProjectView, RegisterAPI, LoginAPI, UserAPI, TagListView
+    InitialDataOfProjectView, RegisterAPI, LoginAPI, UserAPI, TagListView, \
+    ProjectHistoryView
 
 from knox import views as knox_views
 
@@ -34,6 +35,7 @@ urlpatterns = [
     path('auth/register', RegisterAPI.as_view()),
     path('auth/login', LoginAPI.as_view()),
     path('auth/user', UserAPI.as_view()),
-    path('auth/logout', knox_views.LogoutView.as_view(), name='knox_logout')
+    path('auth/logout', knox_views.LogoutView.as_view(), name='knox_logout'),
+    path('hist/', ProjectHistoryView.as_view())
 
 ]

@@ -5,6 +5,7 @@ from django.urls import reverse
 from django.utils import timezone
 from django.utils.text import slugify
 from django.core.validators import MaxValueValidator, MinValueValidator
+from simple_history.models import HistoricalRecords
 
 
 class Company(models.Model):
@@ -69,6 +70,8 @@ class Project(models.Model):
                                          )
     tags = models.ForeignKey('Tag', blank=True, default=None, null=True,
                              on_delete=models.CASCADE)
+
+    history = HistoricalRecords()
 
     def __str__(self):
         return self.title

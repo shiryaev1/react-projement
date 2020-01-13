@@ -42,6 +42,41 @@ class CompanyCreateSerializer(ModelSerializer):
         fields = '__all__'
 
 
+class History(serializers.ModelSerializer):
+    def __init__(self, model, *args, fields='__all__', **kwargs):
+        self.Meta.model = model
+        self.Meta.fields = fields
+        super().__init__()
+
+    class Meta:
+        pass
+
+
+class ProjectHistory(serializers.ModelSerializer):
+    class Meta:
+        model = Project
+        fields = '__all__'
+
+    history = serializers.SerializerMethodField()
+
+    def get_history(self, obj):
+        model = obj.history.__dict__['model']
+        fields = [
+            'history_id',
+            'history_date',
+            'history_type',
+            'history_user',
+            'actual_design',
+            'actual_development',
+            'actual_testing',
+
+        ]
+        serializer = History(model, obj.history.all().order_by('history_date'),
+                             fields=fields, many=True)
+        serializer.is_valid()
+        return serializer.data
+
+
 class ProjectUpdateSerializer(ModelSerializer):
 
     additional_hour_design = serializers.DecimalField(max_digits=7,
