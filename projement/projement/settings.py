@@ -91,7 +91,7 @@ DATABASES = {
         'NAME': 'projement_db',
         'USER': 'developer',
         'PASSWORD': '123123qwe',
-        'HOST': 'localhost',
+        'HOST': 'db',
         'PORT': '5432',
     }
 }

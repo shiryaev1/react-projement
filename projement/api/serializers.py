@@ -1,4 +1,3 @@
-import pdb
 from decimal import Decimal
 
 from django.contrib.auth import authenticate
@@ -7,7 +6,6 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils import timezone
 from rest_framework import serializers
 from rest_framework.fields import SerializerMethodField
-from rest_framework.response import Response
 from rest_framework.serializers import ModelSerializer
 
 from .models import Project, Company, HistoryOfChanges, \
