@@ -70,6 +70,8 @@ class Project(models.Model):
                                          )
     tags = models.ForeignKey('Tag', blank=True, default=None, null=True,
                              on_delete=models.CASCADE)
+    changed_by = models.ForeignKey(User, default=None, null=True, blank=True,
+                                   on_delete=models.CASCADE)
 
     history = HistoricalRecords()
 
@@ -78,6 +80,9 @@ class Project(models.Model):
 
     def get_api_absolute_url(self):
         return reverse('api:project-update', kwargs={'id': self.id})
+
+    def get_api_history_url(self):
+        return reverse('api:project_hist', kwargs={'id': self.id})
 
     def get_absolute_url(self):
         return reverse('project-update', kwargs={'pk': self.pk, 'slug': slugify(self.title)})

@@ -30,12 +30,15 @@ class DashboardViewSet(viewsets.ModelViewSet):
 
 class ProjectUpdateView(RetrieveUpdateAPIView):
     serializer_class = ProjectUpdateSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
     lookup_field = 'id'
 
     def get_object(self):
         pk = self.kwargs["id"]
         return get_object_or_404(Project, id=pk)
+
+    # def perform_create(self, serializer):
+    #     serializer.save(changed_by=self.request.user)
 
 
 class CompanyCreateView(ListCreateAPIView):
@@ -47,6 +50,9 @@ class ProjectCreateView(ListCreateAPIView):
     serializer_class = ProjectCreateSerializer
     permission_classes = [IsAuthenticated]
     queryset = Project.objects.all()
+
+    def perform_create(self, serializer):
+        serializer.save(changed_by=self.request.user)
 
 
 class HistoryOfChangesListView(ListAPIView):
@@ -155,7 +161,14 @@ class UserAPI(RetrieveAPIView):
         return self.request.user
 
 
-class ProjectHistoryView(ListAPIView):
+class ProjectHistoryView(RetrieveAPIView):
     serializer_class = ProjectHistory
-    queryset = Project.objects.all()
+    lookup_field = 'id'
+
+    def get_queryset(self):
+        queryset = Project.objects.filter(
+            id=self.kwargs['id']
+        ).order_by('-id')
+        return queryset
+
     # permission_classes = [IsAuthenticated]

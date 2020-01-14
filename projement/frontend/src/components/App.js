@@ -52,8 +52,8 @@ class App extends Component {
                   <Route exact path="/register" component={Register} />
                   <Route exact path="/login" component={Login} />
                   <PrivateRoute path='/project/:id/update' component={ProjectUpdate} />
-                  <PrivateRoute path='/project/history' component={HistoryOfChanges} />
-                  <PrivateRoute path='/project/:id/history' component={HistoryOfChangesDetail} />
+                  <PrivateRoute path='/project/:id/history' component={HistoryOfChanges} />
+                  {/*<PrivateRoute path='/project/:id/history' component={HistoryOfChangesDetail} />*/}
                   <PrivateRoute path='/project/:id/initial-data' component={InitialDataOfProject} />
                   <PrivateRoute exact path="/tags" component={DashboardTags} />
                   <PrivateRoute path='/tags/history' component={TagAddingHistory} />

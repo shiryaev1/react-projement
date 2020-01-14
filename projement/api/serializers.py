@@ -1,3 +1,4 @@
+import pdb
 from decimal import Decimal
 
 from django.contrib.auth import authenticate
@@ -6,6 +7,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils import timezone
 from rest_framework import serializers
 from rest_framework.fields import SerializerMethodField
+from rest_framework.response import Response
 from rest_framework.serializers import ModelSerializer
 
 from .models import Project, Company, HistoryOfChanges, \
@@ -53,31 +55,38 @@ class History(serializers.ModelSerializer):
 
 
 class ProjectHistory(serializers.ModelSerializer):
+
     class Meta:
         model = Project
-        fields = '__all__'
+        fields = ('history', )
 
     history = serializers.SerializerMethodField()
 
     def get_history(self, obj):
         model = obj.history.__dict__['model']
         fields = [
+            'id',
+            'title',
+            'changed_by',
             'history_id',
             'history_date',
-            'history_type',
             'history_user',
+            'history_type',
             'actual_design',
             'actual_development',
             'actual_testing',
 
         ]
+
         serializer = History(model, obj.history.all().order_by('history_date'),
                              fields=fields, many=True)
         serializer.is_valid()
+
         return serializer.data
 
 
 class ProjectUpdateSerializer(ModelSerializer):
+    changed_by = SerializerMethodField()
 
     additional_hour_design = serializers.DecimalField(max_digits=7,
                                                       decimal_places=2,
@@ -115,16 +124,21 @@ class ProjectUpdateSerializer(ModelSerializer):
             'additional_hour_design',
             'additional_hour_development',
             'additional_hour_testing',
+            'changed_by',
         ]
         read_only_fields = ['actual_design',
                             'actual_development',
-                            'actual_testing'
+                            'actual_testing',
+                            'changed_by'
                             ]
         extra_kwargs = {
             'additional_hour_design': {'write_only': True},
             'additional_hour_development': {'write_only': True},
             'additional_hour_testing': {'write_only': True}
         }
+
+    def get_changed_by(self, obj):
+        return obj.changed_by.username
 
     def update(self, instance, validated_data):
         default_value = Decimal(0)
@@ -159,6 +173,7 @@ class ProjectUpdateSerializer(ModelSerializer):
             'additional_hour_development'))
         instance.actual_testing += Decimal(validated_data.get(
             'additional_hour_testing'))
+        instance.changed_by = self.context.get('request').user
 
         instance.save()
 
@@ -166,6 +181,8 @@ class ProjectUpdateSerializer(ModelSerializer):
 
 
 class ProjectCreateSerializer(ModelSerializer):
+    url = serializers.URLField(source='get_api_history_url', read_only=True,
+                               required=False)
 
     class Meta:
         model = Project

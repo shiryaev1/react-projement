@@ -26,6 +26,7 @@ export class Projects extends Component {
               <th>COMPANY</th>
               <th>ESTIMATED</th>
               <th>ACTUAL</th>
+              <th>HISTORY</th>
               <th />
             </tr>
           </thead>
@@ -37,13 +38,14 @@ export class Projects extends Component {
                 <td>{project.company}</td>
                 <td>{project.estimated}</td>
                 <td>{project.actual}</td>
+                <td><Link to={`/project/${project.id}/history`}>history</Link></td>
               </tr>
             ))}
           </tbody>
         </table>
-        <Link to="/project/history">
-            <input type="button" value="Project history"/>
-        </Link>
+        {/*<Link to="/project/history">*/}
+        {/*    <input type="button" value="Project history"/>*/}
+        {/*</Link>*/}
       </Fragment>
     );
   }
